@@ -42,6 +42,7 @@ body{margin:0}
 .rec{animation:rec 1.2s steps(1) infinite}@keyframes rec{0%{opacity:1}50%{opacity:0.15}}
 @media (prefers-reduced-motion: reduce){.fita,.rec{animation:none !important}}
 
+.sob{transform-box:fill-box;transform-origin:50% 100%;animation:4.5s ease-in-out infinite}.sob-e{animation-name:sobE}.sob-d{animation-name:sobD}@keyframes sobE{0%,55%,100%{transform:translateY(0) rotate(0)}68%,82%{transform:translateY(-9px) rotate(-4deg)}}@keyframes sobD{0%,58%,100%{transform:translateY(0) rotate(0)}70%,82%{transform:translateY(-7px) rotate(3deg)}}@media (prefers-reduced-motion: reduce){.sob{animation:none !important}}
 </style>
 </head>
 <body>
@@ -64,8 +65,8 @@ body{margin:0}
 <path d="M 103.4 229.2 Q 88.9 225.2 100.7 216.5 Q 86.2 210.6 100 203.5 Q 84 195.7 101.3 190.6 Q 89.8 181.5 104.5 178.1 Q 94.2 167.4 109.7 166 Q 100.6 153.9 116.6 154.7 Q 111.7 143.2 125.1 144.5 Q 120.5 130.9 135.2 135.5 Q 132.2 120.8 146.6 127.7 Q 145.3 111.9 159 121.7 Q 161.8 110 172.2 117.2 Q 176.5 104.7 185.9 114.5 Q 192.2 104 200 113.6 Q 208.1 99.5 214.1 114.5 Q 224.1 102.2 227.8 117.2 Q 238.1 110.4 241 121.7 Q 255.4 110.9 253.4 127.7 Q 269.2 119.1 264.8 135.5 Q 280.2 130.3 274.9 144.5 Q 290.7 141.5 283.4 154.7 Q 296.8 155.3 290.3 166 Q 302.6 168.6 295.5 178.1 Q 310.7 181.5 298.7 190.6 Q 310 196.2 300 203.5 Q 311.2 210.6 299.3 216.5 Q 309.7 224.9 296.6 229.2 L 286 246 L 276 240 Q 269 234 262 216.9 Q 249 219.3 236 210.3 Q 218 215.2 200 208.7 Q 182 215.2 164 210.3 Q 151 219.3 138 216.9 Q 131 234 124 240 L 114 246 Z" fill="#111111" stroke-width="6"/>
 <path d="M106 324 L112 318 L118 324 L112 330 Z" fill="#FFFFFF" stroke-width="4"/>
 <path d="M 294 324 L 288 318 L 282 324 L 288 330 Z" fill="#FFFFFF" stroke-width="4"/>
-<path d="M134 270 Q160 246 192 266 L188 278 Q162 262 138 282 Z" fill="#111111" stroke-width="4"/>
-<path d="M268 266 L210 280 L214 294 Q240 282 266 280 Z" fill="#111111" stroke-width="4"/>
+<path class="sob sob-e" d="M134 270 Q160 246 192 266 L188 278 Q162 262 138 282 Z" fill="#111111" stroke-width="4"/>
+<path class="sob sob-d" d="M268 266 L210 280 L214 294 Q240 282 266 280 Z" fill="#111111" stroke-width="4"/>
 <path d="M142 304 Q166 288 190 304 Q166 320 142 308 Z" fill="#FFFFFF" stroke-width="6"/>
 <path d="M258 306 Q234 296 210 306 Q234 318 258 310 Z" fill="#FFFFFF" stroke-width="6"/>
 <circle cx="169" cy="304" r="10" fill="#111111" stroke="none"/><circle cx="173" cy="300" r="3" fill="#FFFFFF" stroke="none"/>
