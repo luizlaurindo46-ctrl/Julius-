@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
 <title>Portfólio Julius — Motion Designer</title>
 <meta name="description" content="Portfólio de Luiz Guilherme (Julius), motion designer.">
 <meta property="og:title" content="Portfólio Julius — Motion Designer">
@@ -42,7 +43,7 @@ body{margin:0}
 .rec{animation:rec 1.2s steps(1) infinite}@keyframes rec{0%{opacity:1}50%{opacity:0.15}}
 @media (prefers-reduced-motion: reduce){.fita,.rec{animation:none !important}}
 
-.sob{transform-box:fill-box;transform-origin:50% 100%;animation:4.5s ease-in-out infinite}.sob-e{animation-name:sobE}.sob-d{animation-name:sobD}@keyframes sobE{0%,55%,100%{transform:translateY(0) rotate(0)}68%,82%{transform:translateY(-9px) rotate(-4deg)}}@keyframes sobD{0%,58%,100%{transform:translateY(0) rotate(0)}70%,82%{transform:translateY(-7px) rotate(3deg)}}@media (prefers-reduced-motion: reduce){.sob{animation:none !important}}
+.gira{transform-origin:50% 50%;animation:gira 6s cubic-bezier(.45,0,.25,1) infinite}@keyframes gira{0%{transform:perspective(900px) rotateY(0deg)}16.6%,100%{transform:perspective(900px) rotateY(360deg)}}.sob{transform-box:fill-box;transform-origin:50% 100%;animation:6s ease-in-out infinite}.sob-e{animation-name:sobE}.sob-d{animation-name:sobD}@keyframes sobE{0%,40%,100%{transform:translateY(0) rotate(0)}52%,68%{transform:translateY(-9px) rotate(-4deg)}80%{transform:translateY(0) rotate(0)}}@keyframes sobD{0%,43%,100%{transform:translateY(0) rotate(0)}55%,68%{transform:translateY(-7px) rotate(3deg)}80%{transform:translateY(0) rotate(0)}}@media (prefers-reduced-motion: reduce){.sob,.gira{animation:none !important}}
 </style>
 </head>
 <body>
@@ -56,7 +57,7 @@ body{margin:0}
 <div class="lg" style="font-size: 134px; line-height: 0.82; padding-bottom: 32px">PORTF</div>
 <div style="position: relative; width: 200px; height: 290px; flex: none">
 <div style="position: absolute; left: 116px; top: -4px; width: 50px; height: 22px; background-color: #E5242B; transform: skewX(-35deg) rotate(-12deg)"></div>
-<div style="position: absolute; left: 0; top: 22px"><svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração do rosto do Julius" viewBox="78 96 244 330" width="200" height="270" style="display: block" fill="none" stroke="#111111" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+<div class="gira" style="position: absolute; left: 0; top: 22px"><svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração do rosto do Julius" viewBox="78 96 244 330" width="200" height="270" style="display: block" fill="none" stroke="#111111" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
 <path d="M120 266 C92 248 80 278 90 302 C96 318 110 324 124 318 Z" fill="#FFFFFF"/>
 <path d="M 280 266 C 308 248 320 278 310 302 C 304 318 290 324 276 318 Z" fill="#FFFFFF"/>
 <path d="M106 280 C96 290 100 304 112 308" stroke-width="5"/>
