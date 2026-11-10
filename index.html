@@ -44,6 +44,7 @@ body{margin:0}
 @media (prefers-reduced-motion: reduce){.fita,.rec{animation:none !important}}
 
 .gira{transform-origin:50% 50%;animation:gira 6s cubic-bezier(.45,0,.25,1) infinite}@keyframes gira{0%{transform:perspective(900px) rotateY(0deg)}16.6%,100%{transform:perspective(900px) rotateY(360deg)}}.sob{transform-box:fill-box;transform-origin:50% 100%;animation:6s ease-in-out infinite}.sob-e{animation-name:sobE}.sob-d{animation-name:sobD}@keyframes sobE{0%,40%,100%{transform:translateY(0) rotate(0)}52%,68%{transform:translateY(-9px) rotate(-4deg)}80%{transform:translateY(0) rotate(0)}}@keyframes sobD{0%,43%,100%{transform:translateY(0) rotate(0)}55%,68%{transform:translateY(-7px) rotate(3deg)}80%{transform:translateY(0) rotate(0)}}@media (prefers-reduced-motion: reduce){.sob,.gira{animation:none !important}}
+.mg-som{position:absolute;right:12px;bottom:12px;width:44px;height:44px;border-radius:50%;border:none;padding:0;background-color:rgba(17,17,17,0.75);display:flex;align-items:center;justify-content:center;cursor:pointer}.mg-som .ico-som{display:none}.mg-som.ligado{background-color:#E5242B}.mg-som.ligado .ico-som{display:block}.mg-som.ligado .ico-mudo{display:none}
 </style>
 </head>
 <body>
@@ -134,12 +135,11 @@ body{margin:0}
 <video poster="videos/app-teaser-capa.jpg" autoplay muted loop playsinline preload="metadata" aria-label="App Teaser — motion graphics de interface do app Proservy" style="display: block; width: 336px; height: 597px; object-fit: cover"><source src="videos/app-teaser.webm" type="video/webm"><source src="videos/app-teaser.mp4" type="video/mp4"></video>
 </div><div class="cq" style="left: 58px; top: 854px"></div><div class="cq" style="left: 58px; top: 1451px"></div><div class="cq" style="left: 394px; top: 854px"></div><div class="cq" style="left: 394px; top: 1451px"></div>
 <div style="position: absolute; left: 64px; top: 1471px; width: 336px; font-family: Caveat, cursive; font-size: 30px; font-weight: 700; color: #111111; line-height: 1">App Teaser</div>
-<div style="position: absolute; left: 432px; top: 860px; width: 336px; height: 597px; background-color: #161616; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px">
-<svg aria-hidden="true" viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="32" r="29" fill="none" stroke="#F3EDE0" stroke-width="3"></circle><path d="M26 20 L46 32 L26 44 Z" fill="#E5242B"></path></svg>
-<div class="lg" style="font-size: 30px; color: #F3EDE0">MOTION 02</div>
-<div style="font-family: Inter, Arial, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #F3EDE0">[ADICIONAR VÍDEO 9:16]</div>
-</div><div class="cq" style="left: 426px; top: 854px"></div><div class="cq" style="left: 426px; top: 1451px"></div><div class="cq" style="left: 762px; top: 854px"></div><div class="cq" style="left: 762px; top: 1451px"></div>
-<div style="position: absolute; left: 432px; top: 1471px; width: 336px; font-family: Caveat, cursive; font-size: 30px; font-weight: 700; color: #111111; line-height: 1">[nome do projeto]</div>
+<div style="position: absolute; left: 432px; top: 860px; width: 336px; height: 597px; background-color: #161616; overflow: hidden">
+<video class="mg-video" src="videos/motion-sports.mp4" poster="videos/motion-sports-capa.jpg" autoplay muted loop playsinline preload="auto" aria-label="Vídeo Motion Sports" style="width: 336px; height: 597px; object-fit: cover; display: block"></video>
+<button type="button" class="mg-som" aria-label="Ligar o som"><svg class="ico-som" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 H8 L13 5 V19 L8 15 H4 Z" fill="#FFFFFF"></path><path d="M16.5 8.5 Q19 12 16.5 15.5 M19 6 Q23.5 12 19 18"></path></svg><svg class="ico-mudo" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#F3EDE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 H8 L13 5 V19 L8 15 H4 Z" fill="#F3EDE0"></path><path d="M17 9 L22 14 M22 9 L17 14"></path></svg></button>
+</div><div class="cq" style="left: 426px; top: 1451px"></div><div class="cq" style="left: 762px; top: 854px"></div><div class="cq" style="left: 762px; top: 1451px"></div>
+<div style="position: absolute; left: 432px; top: 1471px; width: 336px; font-family: Caveat, cursive; font-size: 30px; font-weight: 700; color: #111111; line-height: 1">Motion Sports</div>
 <div style="position: absolute; left: 800px; top: 860px; width: 336px; height: 597px; background-color: #161616; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px">
 <svg aria-hidden="true" viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="32" r="29" fill="none" stroke="#F3EDE0" stroke-width="3"></circle><path d="M26 20 L46 32 L26 44 Z" fill="#E5242B"></path></svg>
 <div class="lg" style="font-size: 30px; color: #F3EDE0">MOTION 03</div>
@@ -169,6 +169,14 @@ body{margin:0}
   }
   window.addEventListener('resize',ajusta); ajusta();
   if(document.fonts) document.fonts.ready.then(ajusta);
+  document.querySelectorAll('.mg-som').forEach(function(b){
+    var v=b.parentNode.querySelector('video');
+    b.addEventListener('click',function(){
+      v.muted=!v.muted; if(!v.muted){v.play();}
+      b.classList.toggle('ligado',!v.muted);
+      b.setAttribute('aria-label',v.muted?'Ligar o som':'Desligar o som');
+    });
+  });
 })();
 </script>
 </body>
