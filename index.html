@@ -133,20 +133,20 @@ body{margin:0}
 <div class="lg" style="position: absolute; left: 64px; top: 790px; font-size: 18px; font-weight: 700; letter-spacing: 1px">02 — MOTION</div>
 <div style="position: absolute; left: 1016px; top: 784px; width: 120px; height: 36px"><svg aria-hidden="true" viewBox="0 0 120 36" width="120" height="36"><path d="M4 4 L32 18 L4 32 Z" fill="#111111"></path><path d="M60 0 L65 13 L78 18 L65 23 L60 36 L55 23 L42 18 L55 13 Z" fill="#111111"></path><circle cx="102" cy="18" r="15" fill="#E5242B"></circle></svg></div>
 <div style="position: absolute; left: 64px; top: 860px; width: 336px; height: 597px; background-color: #161616; overflow: hidden">
-<video poster="videos/app-teaser-capa.jpg" autoplay muted loop playsinline preload="metadata" aria-label="App Teaser — motion graphics de interface do app Proservy" style="display: block; width: 336px; height: 597px; object-fit: cover"><source src="videos/app-teaser.webm" type="video/webm"><source src="videos/app-teaser.mp4" type="video/mp4"></video>
+<video src="videos/app-teaser.mp4" poster="videos/app-teaser-capa.jpg" muted loop playsinline preload="none" aria-label="App Teaser — motion graphics de interface do app Proservy" style="display: block; width: 336px; height: 597px; object-fit: cover"></video>
 </div><div class="cq" style="left: 58px; top: 854px"></div><div class="cq" style="left: 58px; top: 1451px"></div><div class="cq" style="left: 394px; top: 854px"></div><div class="cq" style="left: 394px; top: 1451px"></div>
 <div style="position: absolute; left: 64px; top: 1471px; width: 336px; font-family: Caveat, cursive; font-size: 30px; font-weight: 700; color: #111111; line-height: 1">App Teaser</div>
 <div style="position: absolute; left: 432px; top: 860px; width: 336px; height: 597px; background-color: #161616; overflow: hidden">
-<video src="videos/motion-sports.mp4" poster="videos/motion-sports-capa.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo Motion Sports" style="width: 336px; height: 597px; object-fit: cover; display: block"></video>
+<video src="videos/motion-sports.mp4" poster="videos/motion-sports-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo Motion Sports" style="width: 336px; height: 597px; object-fit: cover; display: block"></video>
 </div><div class="cq" style="left: 426px; top: 1451px"></div><div class="cq" style="left: 762px; top: 854px"></div><div class="cq" style="left: 762px; top: 1451px"></div>
 <div style="position: absolute; left: 432px; top: 1471px; width: 336px; font-family: Caveat, cursive; font-size: 30px; font-weight: 700; color: #111111; line-height: 1">Motion Sports</div>
 <div style="position: absolute; left: 800px; top: 860px; width: 336px; height: 597px; background-color: #161616; overflow: hidden">
-<video src="videos/motion-service.mp4" poster="videos/motion-service-capa.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Motion Service — motion graphics 3D de montagem de móveis" style="width: 336px; height: 597px; object-fit: cover; display: block"></video>
+<video src="videos/motion-service.mp4" poster="videos/motion-service-capa.jpg" muted loop playsinline preload="none" aria-label="Motion Service — motion graphics 3D de montagem de móveis" style="width: 336px; height: 597px; object-fit: cover; display: block"></video>
 </div><div class="cq" style="left: 794px; top: 854px"></div><div class="cq" style="left: 794px; top: 1451px"></div><div class="cq" style="left: 1130px; top: 854px"></div><div class="cq" style="left: 1130px; top: 1451px"></div>
 <div style="position: absolute; left: 800px; top: 1471px; width: 336px; font-family: Caveat, cursive; font-size: 30px; font-weight: 700; color: #111111; line-height: 1">Motion Service</div>
 
 <div style="position: absolute; left: 64px; top: 1550px; width: 1072px; height: 603px; background-color: #161616; overflow: hidden">
-<video src="videos/mixed-media.mp4" poster="videos/mixed-media-capa.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mixed Media — motion graphics da Delícias da Bia" style="width: 1072px; height: 603px; object-fit: cover; display: block"></video>
+<video src="videos/mixed-media.mp4" poster="videos/mixed-media-capa.jpg" muted loop playsinline preload="none" aria-label="Mixed Media — motion graphics da Delícias da Bia" style="width: 1072px; height: 603px; object-fit: cover; display: block"></video>
 </div><div class="cq" style="left: 58px; top: 1544px"></div><div class="cq" style="left: 58px; top: 2147px"></div><div class="cq" style="left: 1130px; top: 1544px"></div><div class="cq" style="left: 1130px; top: 2147px"></div>
 <div style="position: absolute; left: 64px; top: 2167px; width: 1072px; font-family: Caveat, cursive; font-size: 30px; font-weight: 700; color: #111111; line-height: 1">Mixed Media</div>
 
@@ -200,6 +200,22 @@ body{margin:0}
   }
   window.addEventListener('resize',ajusta); ajusta();
   if(document.fonts) document.fonts.ready.then(ajusta);
+})();
+</script>
+<script>
+(function(){
+  var vs=[].slice.call(document.querySelectorAll('video'));
+  var giro=document.querySelector('.tb-giro');
+  vs.forEach(function(v){v.muted=true;});
+  function toca(v){var p=v.play(); if(p&&p.catch)p.catch(function(){});}
+  if(!('IntersectionObserver' in window)){vs.forEach(toca);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    var el=e.target;
+    if(el.tagName==='VIDEO'){ if(e.isIntersecting){ if(el.preload==='none')el.preload='auto'; toca(el);} else el.pause(); }
+    else el.style.animationPlayState=e.isIntersecting?'running':'paused';
+  });},{rootMargin:'200px 0px'});
+  vs.forEach(function(v){io.observe(v);});
+  if(giro){ new IntersectionObserver(function(es){giro.style.animationPlayState=es[0].isIntersecting?'running':'paused';}).observe(giro.parentNode); }
 })();
 </script>
 </body>
