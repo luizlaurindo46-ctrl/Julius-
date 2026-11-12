@@ -217,7 +217,7 @@ body{margin:0}
   if(!('IntersectionObserver' in window)){vs.forEach(toca);return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
     var el=e.target;
-    if(el.tagName==='VIDEO'){ if(e.isIntersecting){ if(el.preload==='none')el.preload='auto'; toca(el);} else el.pause(); }
+    if(el.tagName==='VIDEO'){ el._visivel=e.isIntersecting; if(e.isIntersecting){ if(el.preload==='none')el.preload='auto'; if(!window.__focado||window.__focado===el) toca(el); else el.pause(); } else { el.pause(); if(window.__focado===el){ window.__focado=null; el.muted=true; var b=el.parentNode.querySelector('.som'); if(b){b.classList.remove('on'); b.setAttribute('aria-pressed','false'); b.setAttribute('aria-label','Ligar o som do vídeo');} vs.forEach(function(o){ if(o!==el && o._visivel){toca(o);} }); } } }
     else el.style.animationPlayState=e.isIntersecting?'running':'paused';
   });},{rootMargin:'50px 0px'});
   vs.forEach(function(v){io.observe(v);});
@@ -233,8 +233,11 @@ body{margin:0}
     var caixa=v.parentNode; caixa.classList.add('tem-som');
     caixa.addEventListener('click',function(){
       var ligar=v.muted;
-      vs.forEach(function(o){ if(o!==v){o.muted=true; marca(o);} });
-      v.muted=!ligar; if(ligar){var p=v.play(); if(p&&p.catch)p.catch(function(){});} marca(v);
+      vs.forEach(function(o){ if(o!==v){o.muted=true; marca(o); if(ligar) o.pause();} });
+      v.muted=!ligar;
+      if(ligar){ window.__focado=v; var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
+      else { window.__focado=null; vs.forEach(function(o){ if(o!==v && o._visivel!==false){var q=o.play(); if(q&&q.catch)q.catch(function(){});} }); }
+      marca(v);
     });
   });
 })();
