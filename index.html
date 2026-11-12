@@ -14,6 +14,7 @@
 <style>
 html,body{margin:0;background:#161616}
 #palco{width:1200px;transform-origin:0 0}
+#palco>div{contain:paint}
 #moldura{margin:0 auto;overflow:hidden}
 
 body{margin:0}
@@ -196,11 +197,12 @@ body{margin:0}
 <script>
 (function(){
   var palco=document.getElementById('palco'), moldura=document.getElementById('moldura');
+  var temZoom=window.CSS&&CSS.supports&&CSS.supports('zoom','0.5');
   function ajusta(){
     var s=Math.min(1,document.documentElement.clientWidth/1200);
-    palco.style.transform='scale('+s+')';
     moldura.style.width=(1200*s)+'px';
-    moldura.style.height=(palco.offsetHeight*s)+'px';
+    if(temZoom){ palco.style.zoom=s; palco.style.transform=''; moldura.style.height=''; }
+    else { palco.style.transform='scale('+s+')'; moldura.style.height=(palco.offsetHeight*s)+'px'; }
   }
   window.addEventListener('resize',ajusta); ajusta();
   if(document.fonts) document.fonts.ready.then(ajusta);
@@ -217,9 +219,10 @@ body{margin:0}
     var el=e.target;
     if(el.tagName==='VIDEO'){ if(e.isIntersecting){ if(el.preload==='none')el.preload='auto'; toca(el);} else el.pause(); }
     else el.style.animationPlayState=e.isIntersecting?'running':'paused';
-  });},{rootMargin:'200px 0px'});
+  });},{rootMargin:'50px 0px'});
   vs.forEach(function(v){io.observe(v);});
-  if(giro){ new IntersectionObserver(function(es){giro.style.animationPlayState=es[0].isIntersecting?'running':'paused';}).observe(giro.parentNode); }
+  var anim=new IntersectionObserver(function(es){es.forEach(function(e){e.target.style.animationPlayState=e.isIntersecting?'running':'paused';});},{rootMargin:'100px 0px'});
+  [].forEach.call(document.querySelectorAll('.fita,.gira,.sob,.flutua,.ass,.rec,.tb-giro'),function(el){anim.observe(el.classList.contains('tb-giro')?el:el);});
 })();
 </script>
 <script>
